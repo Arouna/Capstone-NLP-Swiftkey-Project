@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @description\n#' Splits text into 1 or more words.\n#'\n#' @param The raw text to split into words.\n#' @return A character vector containing 1 or more words.\n#'\n#' @export\n#'\nsplittoword <- function (text) {\n\n    stopifnot (is.character (text))\n\n    words <- unlist (strsplit (text, split = \"[ ]+\"))\n    words [nchar (words) > 0]\n}\n",
+    "created" : 1460821805095.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2137664760",
+    "id" : "45C1E65D",
+    "lastKnownWriteTime" : 1461012512,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/splittoword.R",
+    "project_path" : "finalR/splittoword.R",
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "#\n#' @description\n#' Transform a sample text into N-grams.  The function accepts a range\n#' of N values over which to create the N-grams.\n#'\n#' @param Sampletext The text used to generate the language model.\n#' @param N The type of N-Gram models to fit; unigram, bigram, trigram, etc.\n#' @param start_tag The tag used to mark the beginning of a sentence.\n#' @param end_tag The tag used to mark the end of a sentence.\n#' @return A data.table containing n-grams.\n#'\n\nbuiltngram <- function (Sampletext, N = 1:3, start_tag = \"debutdephrase\", end_tag = \"findephrase\") {\n  \n  # sanity checks\n  stopifnot (is.character (Sampletext))\n  stopifnot (length (Sampletext) > 0)\n  stopifnot (is.numeric (N))\n  \n  \n  #Splits text into 1 or more sentences\n  splitsentence <- splittosentence(Sampletext)\n  \n  # transform the text input into clean sentences\n  cleansentence <- clean_sentences (splitsentence, start_tag, end_tag)\n  \n  #List of profanity words to be removed\n  #profanityList <- readLines(\"D:/Big_data/Coursera/Capstone data science/profanity/badwords.txt\",encoding=\"UTF-8\", warn=FALSE, skipNul=TRUE)\n\n  \n  # use quanteda package to create the document feature matrix myDfm\n  myDfm <- dfm(cleansentence,\n               ngrams=N,\n               concatenator=\" \",\n               stem=F)\n\n\n  \n  # convert myDfm to a data.frame\n  mydf <- data.frame(phrase = features(myDfm), history_frequency = colSums(myDfm), \n                     row.names = NULL, stringsAsFactors = FALSE)\n  # convert a data frame to data table\n  myngram <- data.table(mydf)\n  \n  #remove all unsed object from memory\n  rm(mydf,myDfm)\n  \n  return(myngram)\n  \n}\n",
+    "created" : 1460821575353.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3307863383",
+    "id" : "3A4E4A37",
+    "lastKnownWriteTime" : 1461012510,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/builtngram.R",
+    "project_path" : "finalR/builtngram.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

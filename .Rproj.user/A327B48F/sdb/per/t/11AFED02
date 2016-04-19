@@ -1,0 +1,17 @@
+{
+    "contents" : "shinyServer(function(input, output) {\n  \n  mymodel <- readRDS( file = \"C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/shinydir/mymodel.RDS\")\n  \n\n  \n  # Use reactive expression, to enable caching, if input parameters (eg: the user string, or the number of alternative predictions to return) have not changed.\n  do_Predict <- reactive({  \n    #PLACEHOLDER# paste(\"Reactive function activated:\", input$txt_input)\n    predictnexword(mymodel, input$txt_input, rank = 5)\n  })\n  \n  output$txt_prediction <- renderText({\n    head(do_Predict(), 1)  # Return just the first value\n  })\n  \n  output$txt_secondbest <- renderText({\n    do_Predict()[2]  # Return the second value\n  })\n  \n  output$txt_thirdbest <- renderText({\n    do_Predict()[3]  # Return  the third value\n  })\n  \n  output$txt_fourthbest <- renderText({\n    do_Predict()[4]  # Return the fourth value\n  })\n  \n  output$txt_fifthbest <- renderText({\n    do_Predict()[5]  # Return the fifth value\n  })\n  \n  \n#   output$txt_alternatives <- renderText({\n#     paste(do_Predict()[-1], collapse = \", \")  # Return all except the first value\n#   })\n  \n})\n\n",
+    "created" : 1460821885330.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1693651327",
+    "id" : "11AFED02",
+    "lastKnownWriteTime" : 1461017676,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/shinydir/server.R",
+    "project_path" : "shinydir/server.R",
+    "properties" : {
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "Next word prediction using Natural Langage Processing Model\n========================================================\nArouna Mopa\n\nApril 16, 2016\n\nData Science capstone project - Coursera/JHU \n\nProject background\n========================================================\n\nThis project used the NLP model to build an algorithm to suggest the next word, given a text enter by the user as input.\nThe data source used in this project containstThree types of data including twitter, news and blogs. After cleaning and sub-setting \ndata to build the training model,an N-gram model was created  and a predictive algorithm (Katz Back-off) was applied to predict next word. \n\nThe final data product model was publish as a Shiny application. This application can be found online usng the links bellow:\n\n[Shiny App URL] (shny links)\n\n[Project Software] (github link)\n\nHow does the Model Predict the Next Word ?\n========================================================\nIn an N-gram model, the length of the history is N-1. For example In a ◾2-gram model the length of the history is 1. In a 3-gram model, the length of the\nhistory is 2.\n\nThe prediction of the next word is based on the computation of the probability of a phrase which is approximated by the ratio of the number\nof times the phrase occurred divided by the number of times the history occurred:  \n\n◾p(Good morning everybody) = #(Good morning everybody)/ #(Good Morning). \n\n How does the application look like?\n========================================================\n\n* The left panel on the home page has an input box where the user enter a text.  \n\n* As the content of the imput box changes, the suggested next words are displayed in the right panel. \n\n* This application can suggest up to five  next word range in decreasing order of the probality of occurrence.\n \n***\n\n![alt text](\"/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/data/ui.PNG\")\n \n How does the application look like?\n========================================================\n  \n  ![alt text](/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/data/ui.PNG)\n\nResources\n========================================================\n* http://www.cs.pomona.edu/~dkauchak/classes/s11/cs159-s11/lectures/159-5-LM.pdf\n* https://west.uni-koblenz.de/sites/default/files/BachelorArbeit_MartinKoerner.pdf\n* http://www.kenbenoit.net/courses/essex2014qta/exercise6.pdf\n* https://cran.r-project.org/web/packages/quanteda/vignettes/quickstart.html#document-feature-matrix-analysis-tools\n* http://www.kenbenoit.net/courses/nyu2014qta/exercise1.html\n* https://github.com/kbenoit/quanteda\n\n\n\n ",
+    "created" : 1460840258730.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "392852023",
+    "id" : "55B20D6C",
+    "lastKnownWriteTime" : 1461012702,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/capstone NLP Swifkey project.Rpres",
+    "project_path" : "finalR/capstone NLP Swifkey project.Rpres",
+    "properties" : {
+    },
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "type" : "r_presentation"
+}

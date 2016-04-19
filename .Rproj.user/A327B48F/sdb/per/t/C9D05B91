@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @description\n#' Splits text into 1 or more sentences based on sentence boundaries. Sentence\n#' boundaries are demarcated by 1 or more period (.), exclam (!), or question\n#' mark (?).\n#'\n#' @param The raw text to split on sentence boundaries.\n#' @return A character vector containing 1 or more sentences.\n#'\n#' @export\n#'\nsplittosentence <- function (text) {\n\n  # split based on periods, exclams or question marks\n  result <- unlist(strsplit (text, split = \"[\\\\.!?]+\"))\n\n  # do not return empty strings\n  result <- stri_enc_toutf8 (result)\n  result <- result [nchar (result) > 0]\n\n  # ensure that something is always returned\n  if (length (result) == 0)\n      result <- \"\"\n\n  return (result)\n}\n",
+    "created" : 1460821792181.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3373106668",
+    "id" : "C9D05B91",
+    "lastKnownWriteTime" : 1461012512,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/splittosentence.R",
+    "project_path" : "finalR/splittosentence.R",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

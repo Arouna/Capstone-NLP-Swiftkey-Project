@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @description\n#' Performs pre-processing on text input that has been already been split\n#' into sentences.  Each element of the character vector input should\n#' denote a single sentence.\n#'\n#' @param sentences The sentences to pre-process.\n#' @param start_tag The tag used to mark the beginning of a sentence.\n#' @param end_tag The tag used to mark the end of a sentence.\n#' @return A vector of cleaned, pre-processed sentences.\n#'\n#'\nclean_sentences <- function (sentences, start_tag = \"debutdephrase\", end_tag = \"findephrase\") {\n\n    # sanity checks\n    stopifnot (is.character (sentences))\n    stopifnot (length (sentences) > 0)\n\n    # lower case\n   \n    sentences <- tolower (sentences)\n    \n    #sentences <-rm_words(sentences, tm::stopwords(\"en\"))\n    \n   \n    # remove anything that is not alpha, numeric, whitespace or ' (for contractions)\n    sentences <- stri_replace_all_regex (sentences, \"[^A-Za-z0-9 ']+\", \" \")\n\n    # replace all digits with space\n    sentences <- stri_replace_all_regex (sentences, \"[[:digit:]]+\", \" \")\n\n\n    # add starting/ending tag to each sentence\n    sentences <- stri_paste (start_tag, sentences, end_tag, sep = \" \")\n\n    # trim whitespace\n    sentences <- stri_enc_toutf8(sentences)\n\n    return (sentences)\n}\n",
+    "created" : 1460821618535.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2188910693",
+    "id" : "84144839",
+    "lastKnownWriteTime" : 1461012510,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/clean-sentences.R",
+    "project_path" : "finalR/clean-sentences.R",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

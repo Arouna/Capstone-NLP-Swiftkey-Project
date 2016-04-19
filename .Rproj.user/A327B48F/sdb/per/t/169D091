@@ -1,0 +1,17 @@
+{
+    "contents" : "#library(shiny)\n\nshinyUI(fluidPage(\n  titlePanel(\"Next word prediction using Natural Langage Processing Model\"),\n  \n \n  HTML(\"<span style=\\\"color:black; font-style:normal\\\"> Please, enter some text into the Input text box below. As soon as you will key \n        some words into the input text box, the predicted next word will show up in the right panel. The right panel can display up to \n        five (5) predicted next words ranged in decreasing order of their probability of occurence. </span>\"),\n       br(), br(),\n  \n  sidebarLayout(\n    sidebarPanel(\n      textInput(inputId = \"txt_input\", label = \"Input text box\",value = \"Please, enter some text here\"),\n\n      br()         \n      \n    ),\n    \n    mainPanel(\n      h3(\"The best Prediction\"),        \n      strong(textOutput(\"txt_prediction\")), # The best predicted text.\n      \n      tags$head(tags$style(\"#txt_prediction {color: green;\n                           font-size: 28px;\n                           }\"\n        )),\n      tags$head(tags$style(\"#txt_secondbest {color: blue;\n                           font-size: 20px;\n                           }\"\n        )),  # This adds the style to the <HEAD> tag for the page.\n      tags$head(tags$style(\"#txt_thirdbest {color: orange;\n                           font-size: 16px;\n                           }\"\n        )),  # This adds the style to the <HEAD> tag for the page.\n      tags$head(tags$style(\"#txt_fourthbest {color: brown;\n                           font-size: 14px;\n                           }\"\n        )),  # This adds the style to the <HEAD> tag for the page.\n      tags$head(tags$style(\"#txt_fifthbest {color: red;\n                           font-size: 12px;\n                           }\"\n        )),  # This adds the style to the <HEAD> tag for the page.\n      \n      h4(\"Second best prediction\"),\n      #helpText(\"<Alternative predictions go here>\"),\n      strong(textOutput(\"txt_secondbest\")), # The second best predicted word.\n      h5(\"Third best prediction\"),\n      #helpText(\"<Alternative predictions go here>\"),\n      strong(textOutput(\"txt_thirdbest\")), # The third best predicted word.\n      h5(\"The fourth\"),\n      #helpText(\"<Alternative predictions go here>\"),\n      strong(textOutput(\"txt_fourthbest\")), #The fourth best predicted word.\n      h5(\"the fifth\"),\n      #helpText(\"<Alternative predictions go here>\"),\n      strong(textOutput(\"txt_fifthbest\")), # The fifth best predicted word.\n      \n      \n      \n      br(), br(),\n      p(\"Want more information about this application ?\", a(\"Just click here\", href = \"http://rpubs.com/amosang/capstone_final_report\", target = \"_blank\"), \".\"),\n      br()\n      )\n  )\n))\n\n\n",
+    "created" : 1460821851595.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1235687820",
+    "id" : "169D091",
+    "lastKnownWriteTime" : 1460933994,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/shinydir/ui.R",
+    "project_path" : "shinydir/ui.R",
+    "properties" : {
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

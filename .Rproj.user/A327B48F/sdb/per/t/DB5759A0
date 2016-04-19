@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @description\n#' Predicts the next most likely word using an N-Gram language model.\n#'\n#' @param object The N-gram model to use for prediction.\n#' @param newdata A phrase to predict the next word for.\n#' @param rank The top 'rank' most likely words are returned.\n#' @return The next mostly likely word(s).\n#' @export\n#'\n#' @examples\n#' \\dontrun{\n#' data (blogs)\n#' fit <- ngram (blogs)\n#' predict (fit, \"What\")\n#' }\n#'\npredictnexword <- function (object, newdata, rank = 5) {\n    phrase <- newdata\n\n    # sanity checks\n    stopifnot (is.character (phrase))\n    stopifnot (length (phrase) == 1)\n    stopifnot (is.numeric (rank))\n    \n    #Profanity words for filtering the prediction\n    profanityList <- readLines(\"D:/Big_data/Coursera/Capstone data science/profanity/badwords.txt\",encoding=\"UTF-8\", warn=FALSE, skipNul=TRUE)\n    \n    # clean and split the input phrase\n    words <- splittoword (clean_sentences (splittosentence (phrase)))\n\n    # HACK only remove the 'end of sentence marker' if the phrase\n    # did not end with a period.  currently difficult to tell if\n    # the phrase has an explicit sentence ending or if the clean_sentences\n    # function is assuming there should be one.\n    if (!stri_detect (phrase, regex = \".*[\\\\.!?][[:blank:]]*findephrase\"))\n        words <- head (words, -1)\n\n    predictions <- NULL\n    for (n in sort (object$N, decreasing = TRUE)) {\n\n        # ensure there are enough previous words\n        # for example, a trigram ngrams needs 2 previous words\n        if (length (words) >= n-1) {\n\n            # grab the necessary history; last 'n-1' words\n            ctx <- paste (tail (words, n-1), collapse = \" \")\n\n            # find matching history in the model\n            predictions <- object$ngrams [ history == ctx, list (history, word, p, n, rank)]\n            if (nrow (predictions) > 0) {\n\n               \n                # No prediction for the end of the sentence symbol\n                predictions [word == \"findephrase\", word := \".\"]\n                predictions [history == \"\", word := \".\"]\n                \n              \n                \n                # Removing profanity words in prediction\n                predictions [word %in% profanityList, word := \".\"]\n              \n\n                # exclude any missing predictions\n                predictions <- predictions [complete.cases (predictions)]\n\n                # only keep the top 'rank' predictions\n                predictions <- predictions [rank <= rank]\n\n                break\n            }\n        }\n    }\n\n    return (predictions$word)\n}\n",
+    "created" : 1460821772920.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "255559400",
+    "id" : "DB5759A0",
+    "lastKnownWriteTime" : 1461012511,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/predictnexword.R",
+    "project_path" : "finalR/predictnexword.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

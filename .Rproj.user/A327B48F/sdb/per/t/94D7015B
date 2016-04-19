@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @description#'\n#' Calculate MLE of N-gram Probability\n#'\n#' Calculates the maximum liklihood estimate of the probability of any\n#' N-gram based on the training corpus.\n#'\n#'      p (we love you) = count (we love you) / count (we love)\n#'      p (we love)     = count (we love)     / count (we)\n#'      p (we)          = count (we)          / count (<start-of-sentence>)\n#'\n#' @param ngrams A data.table containing all historys in the corpus.\n#' @return The maximum liklihood estimate of the probability of each n-gram.\n\ncalprob <- function (ngrams) {\n  \n  #create a data set that contains the number of times each history occurs in the text\n  historytngram <- ngrams [, sum (history_frequency), by = history]\n  setnames (historytngram, c(\"history\", \"historygram_frequency\"))\n  \n  # through merging of historytngram and ngrams, calculate the probability\n  setkeyv (historytngram, \"history\")\n  setkeyv (ngrams, \"history\") \n  \n  # calculate the maximum liklihood estimate\n  ngrams [historytngram, p := history_frequency/historygram_frequency]\n}",
+    "created" : 1460821598728.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2468093980",
+    "id" : "94D7015B",
+    "lastKnownWriteTime" : 1461012510,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/calprob.R",
+    "project_path" : "finalR/calprob.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

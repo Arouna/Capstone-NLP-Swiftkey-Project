@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @description\n#' Given a phrase of text the function will return the last word.\n#'\n#' @param text The phrase containing words.\n#' @return A character vector containing only the last word in the phrase.\n#'\n#' @export\n#'\nlast_word <- function (text) {\n\n    stopifnot (is.character (text))\n    stopifnot (length (text) == 1)\n\n    # split the phrase into words\n    words <- splittoword (text)\n\n    # the last word only\n    words [length (words)]\n}\n",
+    "created" : 1460821760231.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1142202388",
+    "id" : "501D9346",
+    "lastKnownWriteTime" : 1461012511,
+    "path" : "C:/Users/amopa/Desktop/Coursera/DataSciences/Capstone NLP Swiftkey Project/finalR/last-word.R",
+    "project_path" : "finalR/last-word.R",
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
